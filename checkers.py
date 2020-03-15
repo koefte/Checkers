@@ -22,7 +22,6 @@ class Board():
         self.fieldDictinary = createFieldDictinary(self.rows, self.columns)    
         self.fields = [Field(name, position) for name, position in self.fieldDictinary.items()]
         
-
     def getEmptyFields(self):
         pass
 
@@ -38,12 +37,16 @@ class Board():
 
 class Field():
     
-    def __init__(self, name, position):
+    def __init__(self, name, position, stone=None):
         self.name = name
         self.position = position
+        self.stone = stone
 
     def __str__(self):
-        return "Name: {self.name}, Position: {self.position} \n".format(self=self)
+        return "Name: {self.name}\nPosition: {self.position} \n".format(self=self)
+
+    def addStone(self, stone):
+        pass
 
     def isEmpty(self):
         pass
@@ -75,3 +78,4 @@ class Stone():
 
 if __name__ == "__main__":
     board = Board(8,8)
+    print(board.fields[1])
