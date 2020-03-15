@@ -1,10 +1,25 @@
+from string import ascii_lowercase
+
 class Board():
     
-    def __init__(self):
+    def __init__(self, rows, columns):
         self.rows = rows
         self.columns = columns
-        self.grid = grid
+        self.fieldDictinary = createFieldDictinary(self.rows, self.columns)
 
+        def createFieldDictinary(rows, columns):
+            fieldDictinary = dict()
+            for row in range(rows):
+                for col in range(columns):
+                    
+                    letterStr = ascii_lowercase[col]
+                    numberStr = str(row+1)
+                    name = letterStr + numberStr
+
+                    position = tuple([row,col])
+                    fieldDictinary.update({name: position})
+            return fieldDictinary
+        
     def getEmptyFields(self):
         pass
 
@@ -52,4 +67,5 @@ class Stone():
     def becomeQueen(self):
         pass
 
-
+if __name__ == "__main__":
+    Board(8,8)
