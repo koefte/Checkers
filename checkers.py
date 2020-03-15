@@ -3,9 +3,6 @@ from string import ascii_lowercase
 class Board():
     
     def __init__(self, rows, columns):
-        self.rows = rows
-        self.columns = columns
-        self.fieldDictinary = createFieldDictinary(self.rows, self.columns)
 
         def createFieldDictinary(rows, columns):
             fieldDictinary = dict()
@@ -20,6 +17,12 @@ class Board():
                     fieldDictinary.update({name: position})
             return fieldDictinary
         
+        self.rows = rows
+        self.columns = columns
+        self.fieldDictinary = createFieldDictinary(self.rows, self.columns)    
+        self.fields = [Field(name, position) for name, position in self.fieldDictinary.items()]
+        
+
     def getEmptyFields(self):
         pass
 
@@ -35,9 +38,12 @@ class Board():
 
 class Field():
     
-    def __init__(self):
+    def __init__(self, name, position):
         self.name = name
         self.position = position
+
+    def __str__(self):
+        return "Name: {self.name}, Position: {self.position} \n".format(self=self)
 
     def isEmpty(self):
         pass
@@ -68,4 +74,4 @@ class Stone():
         pass
 
 if __name__ == "__main__":
-    Board(8,8)
+    board = Board(8,8)
